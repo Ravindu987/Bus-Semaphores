@@ -1,5 +1,15 @@
 public class Rider implements Runnable{
 
+    int id;
+
+    public Rider(int id) {
+        this.id = id;
+    }
+
+    public void boardBus(){
+        System.out.println("Passenger %d has boarded the bus", this.id);
+    }
+
     public void run(){
         try {
             Main.multiplex.acquire();
@@ -11,6 +21,7 @@ public class Rider implements Runnable{
             Main.multiplex.release();
 
             //BoardBus
+            boardBus();
 
             Main.riders -= 1;
             if (Main.riders == 0){
@@ -22,8 +33,6 @@ public class Rider implements Runnable{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
 }
