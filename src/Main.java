@@ -4,6 +4,8 @@ import java.util.concurrent.Semaphore;
 public class Main {
 
     static final int busCapacity = 50;
+    static final int busIntervalMean = 10000;
+    static final int riderIntervalMean = 1000;
     static Semaphore mutex = new Semaphore(1);
     static Semaphore multiplex = new Semaphore(busCapacity);
     static Semaphore bus = new Semaphore(0);

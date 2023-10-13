@@ -8,7 +8,7 @@ public class RiderScheduler implements Runnable{
     public void run() {
 
         while (true){
-            long delay = Main.calculateExponentialDelay(1000, riderArrivalRandom);
+            long delay = Main.calculateExponentialDelay(Main.riderIntervalMean, riderArrivalRandom);
 
             Thread rider = new Thread(new Rider(riderCounter));
             rider.start();

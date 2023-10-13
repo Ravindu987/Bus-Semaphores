@@ -11,7 +11,7 @@ public class BusScheduler implements Runnable{
             Thread bus = new Thread(new Bus(Main.busCapacity, 0));
             bus.start();
 
-            long delay = Main.calculateExponentialDelay(10000, busArrivalRandom);
+            long delay = Main.calculateExponentialDelay(Main.busIntervalMean, busArrivalRandom);
 
             try {
                 Thread.sleep(delay);
