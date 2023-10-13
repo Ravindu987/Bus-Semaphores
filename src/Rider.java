@@ -1,13 +1,13 @@
 public class Rider implements Runnable{
 
-    int id;
+    private int id;
 
     public Rider(int id) {
         this.id = id;
         System.out.printf("Rider %d arrived\n", this.id);
     }
 
-    public void boardBus(){
+    private void boardBus(){
         Bus.board();
         System.out.printf("Passenger %d has boarded the bus\n", this.id);
     }
@@ -16,7 +16,7 @@ public class Rider implements Runnable{
         try {
             Main.multiplex.acquire();
             Main.mutex.acquire();
-            Main.riders += 1;
+            Main.waitingRiders += 1;
             Main.mutex.release();
 
             Main.bus.acquire();
@@ -25,8 +25,8 @@ public class Rider implements Runnable{
             //BoardBus
             boardBus();
 
-            Main.riders -= 1;
-            if (Main.riders == 0){
+            Main.waitingRiders -= 1;
+            if (Main.waitingRiders == 0){
                 Main.allAboard.release();
             } else{
                 Main.bus.release();

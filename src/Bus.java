@@ -1,9 +1,7 @@
-import java.util.Random;
-
 public class Bus implements Runnable{
 
-    int capacity;
-    static int load;
+    private static int capacity;
+    private static int load;
 
     public Bus(int capacity, int load) {
         this.capacity = capacity;
@@ -15,7 +13,7 @@ public class Bus implements Runnable{
         load += 1;
     }
 
-    public void depart(){
+    private void depart(){
         System.out.printf("Bus departed with %d passengers\n", this.load);
     }
 
@@ -24,7 +22,7 @@ public class Bus implements Runnable{
         try {
 
             Main.mutex.acquire();
-            if (Main.riders > 0){
+            if (Main.waitingRiders > 0){
                 Main.bus.release();
                 Main.allAboard.acquire();
             }
