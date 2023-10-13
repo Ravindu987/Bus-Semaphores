@@ -1,9 +1,15 @@
 public class Bus implements Runnable{
 
     int capacity;
+    int load;
 
-    public Bus(int capacity) {
+    public Bus(int capacity, int load) {
         this.capacity = capacity;
+        this.load = load;
+    }
+
+    public void depart(){
+        System.out.println("Bus departed with %d passengers", this.load);
     }
 
     @Override
@@ -17,6 +23,7 @@ public class Bus implements Runnable{
             Main.mutex.release();
 
             //Depart
+            depart();
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
