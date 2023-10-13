@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Bus implements Runnable{
 
     int capacity;
@@ -6,6 +8,7 @@ public class Bus implements Runnable{
     public Bus(int capacity, int load) {
         this.capacity = capacity;
         this.load = load;
+        System.out.println("Bus arrived");
     }
 
     public void depart(){
@@ -15,10 +18,11 @@ public class Bus implements Runnable{
     @Override
     public void run() {
         try {
+
             Main.mutex.acquire();
             if (Main.riders > 0){
                 Main.bus.release();
-                Main.allAboard.wait();
+                Main.allAboard.acquire();
             }
             Main.mutex.release();
 

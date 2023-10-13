@@ -4,6 +4,7 @@ public class Rider implements Runnable{
 
     public Rider(int id) {
         this.id = id;
+        System.out.printf("Rider %d arrived\n", this.id);
     }
 
     public void boardBus(){
@@ -17,7 +18,7 @@ public class Rider implements Runnable{
             Main.riders += 1;
             Main.mutex.release();
 
-            Main.bus.wait();
+            Main.bus.acquire();
             Main.multiplex.release();
 
             //BoardBus
