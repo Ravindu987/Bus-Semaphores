@@ -9,7 +9,7 @@ public class Bus implements Runnable{
     }
 
     public void depart(){
-        System.out.println("Bus departed with %d passengers", this.load);
+        System.out.printf("Bus departed with %d passengers\n", this.load);
     }
 
     @Override

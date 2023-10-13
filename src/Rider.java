@@ -7,7 +7,7 @@ public class Rider implements Runnable{
     }
 
     public void boardBus(){
-        System.out.println("Passenger %d has boarded the bus", this.id);
+        System.out.printf("Passenger %d has boarded the bus\n", this.id);
     }
 
     public void run(){
