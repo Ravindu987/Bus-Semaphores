@@ -3,12 +3,16 @@ import java.util.Random;
 public class Bus implements Runnable{
 
     int capacity;
-    int load;
+    static int load;
 
     public Bus(int capacity, int load) {
         this.capacity = capacity;
         this.load = load;
         System.out.println("Bus arrived");
+    }
+
+    public static void board(){
+        load += 1;
     }
 
     public void depart(){

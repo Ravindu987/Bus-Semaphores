@@ -8,6 +8,7 @@ public class Rider implements Runnable{
     }
 
     public void boardBus(){
+        Bus.board();
         System.out.printf("Passenger %d has boarded the bus\n", this.id);
     }
 
