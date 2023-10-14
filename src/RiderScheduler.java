@@ -4,6 +4,10 @@ public class RiderScheduler implements Runnable{
 
     private static final Random riderArrivalRandom = new Random();
     private int riderCounter = 1;
+
+    /**
+     * Overridden run method to simulate the continuous arrival of riders.
+     */
     @Override
     public void run() {
 
