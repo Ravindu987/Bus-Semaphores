@@ -3,6 +3,10 @@ import java.util.Random;
 public class BusScheduler implements Runnable{
 
     private static final Random busArrivalRandom = new Random();
+
+    /**
+     * Overridden run method to simulate the continuous arrival of buses.
+     */
     @Override
     public void run() {
 
