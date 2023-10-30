@@ -12,9 +12,6 @@ public class BusScheduler implements Runnable{
 
         while(true) {
 
-            Thread bus = new Thread(new Bus(Main.busCapacity, 0));
-            bus.start();
-
             long delay = Main.calculateExponentialDelay(Main.busIntervalMean, busArrivalRandom);
 
             try {
@@ -22,6 +19,9 @@ public class BusScheduler implements Runnable{
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
+            Thread bus = new Thread(new Bus(Main.busCapacity, 0));
+            bus.start();
         }
     }
 }

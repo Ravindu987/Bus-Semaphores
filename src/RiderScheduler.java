@@ -12,12 +12,13 @@ public class RiderScheduler implements Runnable{
     public void run() {
 
         while (true){
-            long delay = Main.calculateExponentialDelay(Main.riderIntervalMean, riderArrivalRandom);
 
             Thread rider = new Thread(new Rider(riderCounter));
             rider.start();
 
             riderCounter += 1;
+
+            long delay = Main.calculateExponentialDelay(Main.riderIntervalMean, riderArrivalRandom);
 
             try {
                 Thread.sleep(delay);

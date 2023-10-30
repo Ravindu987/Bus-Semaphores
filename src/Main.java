@@ -5,8 +5,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     static final int busCapacity = 50;
-    static final int busIntervalMean = 10000;  // mean time between bus arrivals
-    static final int riderIntervalMean = 1000; // mean time between rider arrivals
+    static final int busIntervalMean = 120000;  // mean time between bus arrivals
+    static final int riderIntervalMean = 30000; // mean time between rider arrivals
     static Semaphore mutex = new Semaphore(1); // mutex for mutual exclusion
     static Semaphore multiplex = new Semaphore(busCapacity); // semaphore to limit riders based on bus capacity
     static Semaphore bus = new Semaphore(0);  // semaphore to signal the arrival of a bus
@@ -21,11 +21,11 @@ public class Main {
         // Initialize the start time when the program begins
         startTime = System.nanoTime();
 
-        Thread busScheduler = new Thread(new BusScheduler());
         Thread riderScheduler = new Thread(new RiderScheduler());
+        Thread busScheduler = new Thread(new BusScheduler());
 
-        busScheduler.start();
         riderScheduler.start();
+        busScheduler.start();
 
     }
 
